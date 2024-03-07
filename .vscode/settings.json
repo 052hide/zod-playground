@@ -1,0 +1,18 @@
+{
+  "editor.tabSize": 2,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "prettier.prettierPath": "./node_modules/prettier/index.cjs",
+  "css.validate": false,
+  "git.ignoreLimitWarning": true,
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
+}
