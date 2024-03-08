@@ -1,9 +1,8 @@
 import type { ComponentProps } from 'react'
 import type { FieldValues, Context, TransformedValues } from '../../type'
-import { z } from 'zod'
 
 import { useFormContext } from 'react-hook-form'
-import { formattedString, validatedNumberString } from '~/lib/zod'
+import { formattedString, validatedNumberString } from '~/lib/zod/form'
 import { FormFieldWrapper } from '~/components/FormFieldWrapper'
 import { InputTextField } from '~/components/InputTextField'
 import { FIELD_KEY, FIELD_NAME, REQUIRED_NUMBER_SCHEMA } from './const'
