@@ -57,7 +57,7 @@ export const WithQueryString = () => {
                   required_string: 'rrr',
                   optional_string: 'ooo',
                   required_string_array: ['1'],
-                  optional_string_array: ['a', 'b'],
+                  optional_string_array: ['a', 'b', 'a,b,c'],
                 },
               }),
     })
