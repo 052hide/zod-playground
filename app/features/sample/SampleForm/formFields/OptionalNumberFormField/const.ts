@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { OPTIONAL_NUMBER_INPUT_SCHEMA as COMMON_OPTIONAL_NUMBER_INPUT_SCHEMA } from '~/lib/zod/form'
+import { OPTIONAL_NUMBER_STRING_SCHEMA } from '~/lib/zod/form'
 import { formattedNumberString } from '~/utils/form'
 
 export const FIELD_KEY = 'optionalNumber'
@@ -10,11 +10,13 @@ const RANGE = {
   max: 1_000_000_000,
 } as const
 
-export const OPTIONAL_NUMBER_SCHEMA = COMMON_OPTIONAL_NUMBER_INPUT_SCHEMA({
+export const NUMBER_STRING_SCHEMA = OPTIONAL_NUMBER_STRING_SCHEMA({
   fieldName: FIELD_NAME,
   formatFn: formattedNumberString,
-}).pipe<
-  z.ZodType<z.output<ReturnType<typeof COMMON_OPTIONAL_NUMBER_INPUT_SCHEMA>>>
+})
+
+export const OPTIONAL_NUMBER_SCHEMA = NUMBER_STRING_SCHEMA.pipe<
+  z.ZodType<z.output<ReturnType<typeof OPTIONAL_NUMBER_STRING_SCHEMA>>>
 >(
   z
     .number()

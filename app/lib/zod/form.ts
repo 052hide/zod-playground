@@ -2,7 +2,7 @@ import { z, ZodType } from 'zod'
 
 import type { FocusEvent } from 'react'
 
-export const REQUIRED_NUMBER_INPUT_SCHEMA = ({
+export const REQUIRED_NUMBER_STRING_SCHEMA = ({
   fieldName,
   formatFn,
 }: {
@@ -26,7 +26,7 @@ export const REQUIRED_NUMBER_INPUT_SCHEMA = ({
       }
     )
 
-export const OPTIONAL_NUMBER_INPUT_SCHEMA = ({
+export const OPTIONAL_NUMBER_STRING_SCHEMA = ({
   fieldName,
   formatFn,
 }: {
@@ -61,9 +61,9 @@ export const formattedString = ({
 }: {
   event: FocusEvent<HTMLInputElement, Element>
   fieldSchema: ZodType<
-    z.output<ReturnType<typeof OPTIONAL_NUMBER_INPUT_SCHEMA>>,
+    z.output<ReturnType<typeof OPTIONAL_NUMBER_STRING_SCHEMA>>,
     z.ZodTypeDef,
-    z.input<ReturnType<typeof OPTIONAL_NUMBER_INPUT_SCHEMA>>
+    z.input<ReturnType<typeof OPTIONAL_NUMBER_STRING_SCHEMA>>
   >
 }) => {
   const safeParsed = fieldSchema.safeParse(event.target.value)
@@ -80,9 +80,9 @@ export const validatedNumberString = ({
 }: {
   event: FocusEvent<HTMLInputElement, Element>
   fieldSchema: ZodType<
-    z.output<ReturnType<typeof OPTIONAL_NUMBER_INPUT_SCHEMA>>,
+    z.output<ReturnType<typeof OPTIONAL_NUMBER_STRING_SCHEMA>>,
     z.ZodTypeDef,
-    z.input<ReturnType<typeof OPTIONAL_NUMBER_INPUT_SCHEMA>>
+    z.input<ReturnType<typeof OPTIONAL_NUMBER_STRING_SCHEMA>>
   >
 }) => {
   const safeParsed = fieldSchema.safeParse(event.target.value)

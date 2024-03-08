@@ -5,7 +5,7 @@ import { useFormContext } from 'react-hook-form'
 import { formattedString, validatedNumberString } from '~/lib/zod/form'
 import { FormFieldWrapper } from '~/components/FormFieldWrapper'
 import { InputTextField } from '~/components/InputTextField'
-import { FIELD_KEY, FIELD_NAME, OPTIONAL_NUMBER_SCHEMA } from './const'
+import { FIELD_KEY, FIELD_NAME, NUMBER_STRING_SCHEMA } from './const'
 
 export const OptionalNumberFormField = () => {
   const { formState, register, setValue } = useFormContext<
@@ -19,7 +19,7 @@ export const OptionalNumberFormField = () => {
   const handleFocus: ComponentProps<typeof InputTextField>['onFocus'] = (e) => {
     const x = validatedNumberString({
       event: e,
-      fieldSchema: OPTIONAL_NUMBER_SCHEMA,
+      fieldSchema: NUMBER_STRING_SCHEMA,
     })
     if (x) {
       setValue(FIELD_KEY, x)
@@ -29,7 +29,7 @@ export const OptionalNumberFormField = () => {
   const handleBlur: ComponentProps<typeof InputTextField>['onBlur'] = (e) => {
     const x = formattedString({
       event: e,
-      fieldSchema: OPTIONAL_NUMBER_SCHEMA,
+      fieldSchema: NUMBER_STRING_SCHEMA,
     })
     if (x) {
       setValue(FIELD_KEY, x)
