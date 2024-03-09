@@ -1,5 +1,5 @@
 import type { ComponentProps } from 'react'
-import type { FieldValues, Context, TransformedValues } from '../../type'
+import type { I, C, O } from '../../type'
 
 import { useFormContext } from 'react-hook-form'
 import {
@@ -15,11 +15,7 @@ import {
 } from './const'
 
 export const RequiredNumberFormField = () => {
-  const { formState, register, setValue } = useFormContext<
-    FieldValues,
-    Context,
-    TransformedValues
-  >()
+  const { formState, register, setValue } = useFormContext<I, C, O>()
 
   const { onBlur, ...registration } = register(FIELD_KEY)
 

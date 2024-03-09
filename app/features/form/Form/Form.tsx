@@ -1,4 +1,4 @@
-import type { FieldValues, Context, TransformedValues } from './type'
+import type { I, C, O } from './type'
 
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -8,14 +8,13 @@ import { FORM_SCHEMA } from './const'
 import { OptionalNumberFormField, RequiredNumberFormField } from './formFields'
 
 export const Form = () => {
-  const [submittedValue, setSubmittedValue] =
-    useState<TransformedValues | null>(null)
+  const [submittedValue, setSubmittedValue] = useState<O | null>(null)
 
-  const formMethods = useForm<FieldValues, Context, TransformedValues>({
+  const formMethods = useForm<I, C, O>({
     resolver: zodResolver(FORM_SCHEMA),
   })
 
-  const submitHandler = (data: TransformedValues) => {
+  const submitHandler = (data: O) => {
     setSubmittedValue(data)
   }
 
