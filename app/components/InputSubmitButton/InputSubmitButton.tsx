@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+
 import type { InputSubmitButtonProps, InputSubmitButtonRef } from './type'
 
 const Base = (

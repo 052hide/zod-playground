@@ -1,7 +1,10 @@
-import { useMemo, useState } from 'react'
 import { useLocation, useNavigate } from '@remix-run/react'
-import { parse, stringify } from '~/utils/queryString'
+import { useMemo, useState } from 'react'
+
 import type { ValidatedQueryStringResult } from './type'
+
+import { parse, stringify } from '~/utils/queryString'
+
 import { QUERY_STRING_SCHEMA } from './const'
 
 export const WithQueryString = () => {

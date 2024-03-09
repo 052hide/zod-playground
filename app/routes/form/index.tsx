@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node'
+
 import { Form } from '~/features/form/Form'
 
 export const meta: MetaFunction = () => {

@@ -1,5 +1,6 @@
-import { type ZodType, z } from 'zod'
-import { TRANSFORM_OPTIONAL_STRING_TO_NUMBER_SCHEMA } from '~/lib/zod/form/util'
+import type { z, ZodType } from 'zod'
+
+import type { TRANSFORM_OPTIONAL_STRING_TO_NUMBER_SCHEMA } from '~/lib/zod/form/util'
 
 export const parseValidNumberString = (value: string) => {
   return value

@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node'
+
 import { WithQueryString } from '~/features/queryString/WithQueryString'
 
 export const meta: MetaFunction = () => {

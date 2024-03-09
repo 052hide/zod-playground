@@ -1,13 +1,15 @@
-import type { ComponentProps } from 'react'
-import type { I, C, O } from '../../type'
-
 import { useFormContext } from 'react-hook-form'
+
+import type { I, C, O } from '../../type'
+import type { ComponentProps } from 'react'
+
+import { FormFieldWrapper } from '~/components/FormFieldWrapper'
+import { InputTextField } from '~/components/InputTextField'
 import {
   parseNumberStringWithValidation,
   parseValidNumberStringWithValidation,
 } from '~/utils/form'
-import { FormFieldWrapper } from '~/components/FormFieldWrapper'
-import { InputTextField } from '~/components/InputTextField'
+
 import {
   FIELD_KEY,
   FIELD_NAME,

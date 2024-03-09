@@ -1,4 +1,5 @@
-import { z } from 'zod'
+import type { z } from 'zod'
+
 import {
   DEFAULT_NUMBER_SCHEMA,
   DEFAULT_STRING_SCHEMA,

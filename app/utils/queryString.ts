@@ -1,6 +1,8 @@
 import queryString from 'query-string'
-import { z } from 'zod'
-import {
+
+import type { z } from 'zod'
+
+import type {
   OPTIONAL_NUMBER_SCHEMA,
   OPTIONAL_STRING_ARRAY_SCHEMA,
   OPTIONAL_STRING_SCHEMA,

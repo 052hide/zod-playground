@@ -1,4 +1,5 @@
 import { forwardRef } from 'react'
+
 import type { InputTextFieldProps, InputTextFieldRef } from './type'
 
 const Base = ({ ...props }: InputTextFieldProps, ref: InputTextFieldRef) => {

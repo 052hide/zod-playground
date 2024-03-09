@@ -23,6 +23,29 @@ module.exports = {
   // Base config
   extends: ['eslint:recommended'],
 
+  rules: {
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'type',
+          'internal',
+          ['parent', 'sibling'],
+          'object',
+          'index',
+        ],
+        'newlines-between': 'always-and-inside-groups',
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: { order: 'asc', caseInsensitive: true },
+        pathGroups: [
+          { pattern: '@/**', group: 'internal', position: 'before' },
+        ],
+      },
+    ],
+  },
+
   overrides: [
     // React
     {
@@ -70,6 +93,10 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:import/typescript',
       ],
+
+      rules: {
+        '@typescript-eslint/consistent-type-imports': 'error',
+      },
     },
 
     // Node
