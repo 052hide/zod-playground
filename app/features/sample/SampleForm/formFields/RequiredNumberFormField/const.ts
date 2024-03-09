@@ -1,6 +1,10 @@
 import { z } from 'zod'
-import { REQUIRED_NUMBER_STRING_SCHEMA } from '~/lib/zod/form'
-import { formattedNumberString } from '~/utils/form'
+import {
+  DEFAULT_NUMBER_SCHEMA,
+  DEFAULT_STRING_SCHEMA,
+} from '~/lib/zod/form/primitive'
+import { TRANSFORM_STRING_TO_NUMBER_SCHEMA as TRANSFORM_SCHEMA } from '~/lib/zod/form/util'
+import { parseValidNumberString } from '~/utils/form'
 
 export const FIELD_KEY = 'requiredNumber'
 export const FIELD_NAME = '数値（必須）'
@@ -10,16 +14,21 @@ const RANGE = {
   max: 1_000_000_000,
 } as const
 
-export const NUMBER_STRING_SCHEMA = REQUIRED_NUMBER_STRING_SCHEMA({
-  fieldName: FIELD_NAME,
-  formatFn: formattedNumberString,
+export const TRANSFORM_STRING_TO_NUMBER_SCHEMA = TRANSFORM_SCHEMA({
+  inputSchema: DEFAULT_STRING_SCHEMA({
+    invalidTypeErrorMessage: `${FIELD_NAME}は数値で入力してください`,
+    requiredErrorMessage: `${FIELD_NAME}を入力してください`,
+  }),
+  parseValidNumberString,
 })
 
-export const REQUIRED_NUMBER_SCHEMA = NUMBER_STRING_SCHEMA.pipe<
-  z.ZodType<z.output<ReturnType<typeof REQUIRED_NUMBER_STRING_SCHEMA>>>
+export const REQUIRED_NUMBER_SCHEMA = TRANSFORM_STRING_TO_NUMBER_SCHEMA.pipe<
+  z.ZodType<z.output<typeof TRANSFORM_STRING_TO_NUMBER_SCHEMA>>
 >(
-  z
-    .number()
+  DEFAULT_NUMBER_SCHEMA({
+    invalidTypeErrorMessage: `${FIELD_NAME}は数値で入力してください`,
+    safeErrorMessage: `${FIELD_NAME}は${RANGE.min}から${RANGE.max}を入力してください`,
+  })
     .int({
       message: `${FIELD_NAME}は整数で入力してください`,
     })

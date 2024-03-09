@@ -2,10 +2,17 @@ import type { ComponentProps } from 'react'
 import type { FieldValues, Context, TransformedValues } from '../../type'
 
 import { useFormContext } from 'react-hook-form'
-import { formattedString, validatedNumberString } from '~/lib/zod/form'
+import {
+  parseNumberStringWithValidation,
+  parseValidNumberStringWithValidation,
+} from '~/utils/form'
 import { FormFieldWrapper } from '~/components/FormFieldWrapper'
 import { InputTextField } from '~/components/InputTextField'
-import { FIELD_KEY, FIELD_NAME, NUMBER_STRING_SCHEMA } from './const'
+import {
+  FIELD_KEY,
+  FIELD_NAME,
+  TRANSFORM_STRING_TO_NUMBER_SCHEMA,
+} from './const'
 
 export const RequiredNumberFormField = () => {
   const { formState, register, setValue } = useFormContext<
@@ -17,9 +24,9 @@ export const RequiredNumberFormField = () => {
   const { onBlur, ...registration } = register(FIELD_KEY)
 
   const handleFocus: ComponentProps<typeof InputTextField>['onFocus'] = (e) => {
-    const x = validatedNumberString({
-      event: e,
-      fieldSchema: NUMBER_STRING_SCHEMA,
+    const x = parseValidNumberStringWithValidation({
+      v: e.target.value,
+      fieldSchema: TRANSFORM_STRING_TO_NUMBER_SCHEMA,
     })
     if (x) {
       setValue(FIELD_KEY, x)
@@ -27,9 +34,9 @@ export const RequiredNumberFormField = () => {
   }
 
   const handleBlur: ComponentProps<typeof InputTextField>['onBlur'] = (e) => {
-    const x = formattedString({
-      event: e,
-      fieldSchema: NUMBER_STRING_SCHEMA,
+    const x = parseNumberStringWithValidation({
+      v: e.target.value,
+      fieldSchema: TRANSFORM_STRING_TO_NUMBER_SCHEMA,
     })
     if (x) {
       setValue(FIELD_KEY, x)
