@@ -7,7 +7,7 @@ import { InputSubmitButton } from '~/components/InputSubmitButton'
 import { FORM_SCHEMA } from './const'
 import { OptionalNumberFormField, RequiredNumberFormField } from './formFields'
 
-export const SampleForm = () => {
+export const Form = () => {
   const [submittedValue, setSubmittedValue] =
     useState<TransformedValues | null>(null)
 
